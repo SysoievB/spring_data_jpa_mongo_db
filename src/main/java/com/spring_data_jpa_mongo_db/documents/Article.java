@@ -20,6 +20,7 @@ public class Article {
 
     @Id
     Long id;
+    String title;
     @TextIndexed
     String text;
     @CreatedDate

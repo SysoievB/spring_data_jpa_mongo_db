@@ -27,6 +27,7 @@ public class Author {
     @Field(name = "article_count")
     Integer articleCount;
     Boolean active;
+    @Setter
     @DBRef(lazy = true)
     List<Article> articles;
 
