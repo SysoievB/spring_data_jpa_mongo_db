@@ -28,7 +28,7 @@ public class Author {
     Integer articleCount;
     Boolean active;
     @Setter
-    @DBRef(lazy = true)
+    @DBRef
     List<Article> articles;
 
 }

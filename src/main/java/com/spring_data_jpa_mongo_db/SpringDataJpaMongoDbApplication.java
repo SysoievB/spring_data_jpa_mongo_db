@@ -7,6 +7,7 @@ import com.spring_data_jpa_mongo_db.repo.AuthorRepo;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
@@ -17,7 +18,8 @@ import java.util.List;
 @EnableMongoAuditing
 @SpringBootApplication
 @RequiredArgsConstructor
-public class SpringDataJpaMongoDbApplication {
+public class SpringDataJpaMongoDbApplication implements CommandLineRunner {
+
     private final ArticleRepo articleRepo;
     private final AuthorRepo authorRepo;
 
@@ -52,4 +54,9 @@ public class SpringDataJpaMongoDbApplication {
         SpringApplication.run(SpringDataJpaMongoDbApplication.class, args);
     }
 
+    @Override
+    public void run(String... args) throws Exception {
+        authorRepo.findAll()
+                .forEach(System.out::println);
+    }
 }
